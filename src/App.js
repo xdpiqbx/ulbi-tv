@@ -1,12 +1,11 @@
 import React from 'react';
-import Counter from './components/counter';
-import ClassCounter from './components/classCounter';
+import PostItem from './components/PostItem';
+import './styles/App.css';
 
 export default function App() {
   return (
     <div className="App">
-      <Counter />
-      <ClassCounter />
+      <PostItem />
     </div>
   );
 }

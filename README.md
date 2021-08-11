@@ -144,6 +144,44 @@ export default class ClassCounter extends Component{
 
 ---
 
+# [Хуки](https://reactjs.org/docs/hooks-reference.html)
+
+1. [useState()](https://reactjs.org/docs/hooks-reference.html#usestate)
+2. [useEffect()](https://reactjs.org/docs/hooks-reference.html#useeffect)
+3. [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext)
+
+4. [useRef()](https://reactjs.org/docs/hooks-reference.html#useref)
+5. [useMemo()](https://reactjs.org/docs/hooks-reference.html#usememo)
+6. [useCallback()](https://reactjs.org/docs/hooks-reference.html#usecallback)
+7. [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+
+---
+
+# [Styling and CSS](https://reactjs.org/docs/faq-styling.html#gatsby-focus-wrapper)
+
+className
+
+```js
+render() {
+  return <span className="menu">Menu</span>
+}
+```
+
+inline styles
+
+```js
+const divStyle = {
+  color: 'blue',
+  backgroundImage: 'url(' + imgUrl + ')', // use camelCase!
+};
+
+function HelloWorldComponent() {
+  return <div style={divStyle}>Hello World!</div>;
+}
+```
+
+---
+
 > ### Для клонирования этой ветки
 
 ```code
