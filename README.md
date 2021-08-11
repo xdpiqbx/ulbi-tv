@@ -66,6 +66,82 @@ export default function App() {
 }
 ```
 
+```js
+=== counter.js ===
+
+const Counter = () => {
+  return(
+    <div>
+
+    </div>
+  )
+}
+export default Counter
+```
+
+```js
+=== counter.js ===
+
+import { useState } from "react"
+
+const Counter = () => {
+  const [count, setCount] = useState(0)
+  function increment() {
+    setCount(count + 1);
+  }
+  function decrement() {
+    setCount(count - 1);
+  }
+  return(
+    <div>
+      <h1>{count}</h1>
+      <button onClick={increment}>Incr</button>
+      <button onClick={decrement}>Decr</button>
+    </div>
+  )
+}
+
+export default Counter
+```
+
+```js
+=== classCounter.js пример классового компонента ===
+
+import { Component } from "react";
+
+export default class ClassCounter extends Component{
+
+  constructor(props){
+    super(props)
+    this.state = {
+      count: 0
+    }
+    this.increment = this.increment.bind(this)
+    this.decrement = this.decrement.bind(this)
+
+  }
+
+  increment() {
+    this.setState({count: this.state.count + 1})
+  }
+
+  decrement() {
+    this.setState({count: this.state.count - 1})
+  }
+
+  render(){
+    const {count} = this.state
+    return(
+      <div>
+        <h1>{count}</h1>
+        <button onClick={this.increment}>Incr</button>
+        <button onClick={this.decrement}>Decr</button>
+      </div>
+    )
+  }
+}
+```
+
 ---
 
 > ### Для клонирования этой ветки
