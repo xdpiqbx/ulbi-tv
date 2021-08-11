@@ -1,11 +1,11 @@
-const PostItem = () => {
+const PostItem = ({post}) => {
+  const {id, title, body} = post
   return(
     <div className="post">
       <div className="post__content">
-        <strong>1. Javascript</strong>
+        <strong>{id}. {title}</strong>
         <div>
-          Javascript - Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Labore, officia.
+          {body}
         </div>
       </div>
       <div className="post__btns">
