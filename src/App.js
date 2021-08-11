@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton';
 import MyInput from './components/UI/input/MyInput';
@@ -20,10 +20,13 @@ export default function App() {
   ]);
 
   const [title, setTitle] = useState('');
+  const bodyInputRef = useRef(); // прямой доступ к DOM елементам
 
   const addNewPost = (event) => {
     event.preventDefault();
     console.log(title);
+    console.log(bodyInputRef.current); // <input type="text" />
+    console.log(bodyInputRef.current.value);
   };
 
   return (
@@ -35,7 +38,12 @@ export default function App() {
           type="text"
           placeholder="Название поста"
         />
-        <MyInput type="text" placeholder="Описание поста" />
+        <input ref={bodyInputRef} type="text" />
+        {/* <MyInput
+          ref={bodyInputRef}
+          type="text"
+          placeholder="Описание поста"
+        /> */}
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
       <PostList posts={posts} title="Список постов JS" />
