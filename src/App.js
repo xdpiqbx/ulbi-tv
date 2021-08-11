@@ -6,7 +6,7 @@ import MyInput from './components/UI/input/MyInput';
 import './styles/App.css';
 
 export default function App() {
-  const [posts1, setPosts1] = useState([
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: 'Javascript',
@@ -18,14 +18,27 @@ export default function App() {
       body: 'React - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, officia.',
     },
   ]);
+
+  const [title, setTitle] = useState('');
+
+  const addNewPost = (event) => {
+    event.preventDefault();
+    console.log(title);
+  };
+
   return (
     <div className="App">
       <form>
-        <MyInput type="text" placeholder="Название поста" />
+        <MyInput
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          type="text"
+          placeholder="Название поста"
+        />
         <MyInput type="text" placeholder="Описание поста" />
-        <MyButton disabled>Создать пост</MyButton>
+        <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
-      <PostList posts={posts1} title="Список постов JS" />
+      <PostList posts={posts} title="Список постов JS" />
     </div>
   );
 }
