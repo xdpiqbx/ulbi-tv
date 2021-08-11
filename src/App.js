@@ -25,25 +25,25 @@ export default function App() {
   const addNewPost = (event) => {
     event.preventDefault();
     console.log(title);
-    console.log(bodyInputRef.current); // <input type="text" />
     console.log(bodyInputRef.current.value);
   };
 
   return (
     <div className="App">
       <form>
+        {/*Управляемый компонент*/}
         <MyInput
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           placeholder="Название поста"
         />
-        <input ref={bodyInputRef} type="text" />
-        {/* <MyInput
+        {/*НЕ управляемый компонент*/}
+        <MyInput
           ref={bodyInputRef}
           type="text"
           placeholder="Описание поста"
-        /> */}
+        />
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
       <PostList posts={posts} title="Список постов JS" />

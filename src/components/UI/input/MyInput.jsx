@@ -1,8 +1,9 @@
+import { forwardRef } from 'react'
 import s from './MyInput.module.css'
 
-const MyInput = (props) => {
+const MyInput = forwardRef( (props, ref) => {
   return(
-    <input className={s.myInput} {...props}/>
+    <input ref={ref} className={s.myInput} {...props}/>
   )
-}
+})
 export default MyInput
