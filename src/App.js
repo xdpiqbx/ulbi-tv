@@ -3,6 +3,7 @@ import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 
 import './styles/App.css';
+import MySelect from './components/UI/select/MySelect';
 
 export default function App() {
   const [posts, setPosts] = useState([
@@ -18,6 +19,8 @@ export default function App() {
     },
   ]);
 
+  const [selectedSort, setSelectedSort] = useState('');
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -26,9 +29,31 @@ export default function App() {
     setPosts(posts.filter((p) => p.id !== id));
   };
 
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    console.log(sort);
+  };
+
   return (
     <div className="App">
       <PostForm create={createPost} />
+      <hr style={{ margin: '15px 0' }} />
+      <MySelect
+        options={[
+          {
+            value: 'title',
+            title: 'По названию',
+          },
+          {
+            value: 'body',
+            title: 'По описанию',
+          },
+        ]}
+        defaultValue="Сортировка по"
+        value={selectedSort}
+        onChange={sortPosts}
+      />
+
       {posts.length ? (
         <PostList
           posts={posts}
