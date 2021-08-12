@@ -29,11 +29,15 @@ export default function App() {
   return (
     <div className="App">
       <PostForm create={createPost} />
-      <PostList
-        posts={posts}
-        title="Список постов JS"
-        remove={removePost}
-      />
+      {posts.length ? (
+        <PostList
+          posts={posts}
+          title="Список постов JS"
+          remove={removePost}
+        />
+      ) : (
+        <h1 style={{ textAlign: 'center' }}>No posts</h1>
+      )}
     </div>
   );
 }
