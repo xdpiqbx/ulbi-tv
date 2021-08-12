@@ -19,35 +19,29 @@ export default function App() {
     },
   ]);
 
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [post, setPost] = useState({ title: '', body: '' });
 
   const addNewPost = (event) => {
     event.preventDefault();
-    const newPost = {
-      // id: posts[posts.length - 1].id + 1,
-      id: Date.now(),
-      title,
-      body,
-    };
-    setPosts([...posts, newPost]);
-    setTitle('');
-    setBody('');
+    setPosts([...posts, { ...post, id: Date.now() }]);
+    setPost({ title: '', body: '' });
   };
 
   return (
     <div className="App">
       <form>
         <MyInput
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={post.title}
+          onChange={(e) =>
+            setPost({ ...post, title: e.target.value })
+          }
           type="text"
           placeholder="Название поста"
         />
 
         <MyInput
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={post.body}
+          onChange={(e) => setPost({ ...post, body: e.target.value })}
           type="text"
           placeholder="Описание поста"
         />

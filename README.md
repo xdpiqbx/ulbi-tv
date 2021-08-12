@@ -6,9 +6,9 @@
 
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
-#### [Продолжаю](https://youtu.be/GNrdg3PzpJQ?t=2511)
+#### [Продолжаю](https://youtu.be/GNrdg3PzpJQ?t=3347)
 
-#### [ПРо useRef](https://youtu.be/GNrdg3PzpJQ?t=3045)
+#### [Про useRef](https://youtu.be/GNrdg3PzpJQ?t=3045)
 
 ---
 
