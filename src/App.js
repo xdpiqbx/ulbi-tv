@@ -22,10 +22,18 @@ export default function App() {
     setPosts([...posts, newPost]);
   };
 
+  const removePost = (id) => {
+    setPosts(posts.filter((p) => p.id !== id));
+  };
+
   return (
     <div className="App">
       <PostForm create={createPost} />
-      <PostList posts={posts} title="Список постов JS" />
+      <PostList
+        posts={posts}
+        title="Список постов JS"
+        remove={removePost}
+      />
     </div>
   );
 }

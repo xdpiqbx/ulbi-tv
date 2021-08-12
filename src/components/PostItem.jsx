@@ -1,4 +1,6 @@
-const PostItem = ({post, index}) => {
+import MyButton from "./UI/button/MyButton"
+
+const PostItem = ({post, index, remove}) => {
   const {id, title, body} = post
   return(
     <div className="post" data-id={id}>
@@ -9,7 +11,7 @@ const PostItem = ({post, index}) => {
         </div>
       </div>
       <div className="post__btns">
-        <button>Delete post</button>
+        <MyButton onClick={()=>remove(id)}>Delete post</MyButton>
       </div>
     </div>
   )
