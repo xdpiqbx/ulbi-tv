@@ -1,4 +1,4 @@
-import s from './MySelect.module.css'
+// import s from './MySelect.module.css'
 
 const MySelect =  ({options, defaultValue, value, onChange}) => {
   return(
