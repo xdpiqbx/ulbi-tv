@@ -8,14 +8,14 @@ import MySelect from './components/UI/select/MySelect';
 export default function App() {
   const [posts, setPosts] = useState([
     {
-      id: 1,
-      title: 'Javascript',
-      body: 'Javascript - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, officia.',
-    },
-    {
       id: 2,
       title: 'React',
       body: 'React - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, officia.',
+    },
+    {
+      id: 1,
+      title: 'Javascript',
+      body: 'Javascript - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, officia.',
     },
   ]);
 
@@ -31,6 +31,12 @@ export default function App() {
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
+    setPosts(
+      [...posts].sort((a, b) => {
+        return a[sort].localeCompare(b[sort]);
+      })
+    );
+
     console.log(sort);
   };
 
