@@ -29,6 +29,12 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSort, posts]);
 
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(searchQuery)
+    );
+  }, [searchQuery, sortedPosts]);
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -49,7 +55,7 @@ export default function App() {
       <MyInput
         placeholder="Поиск..."
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
       />
       <MySelect
         options={[
@@ -67,9 +73,9 @@ export default function App() {
         onChange={sortPosts}
       />
 
-      {posts.length ? (
+      {sortedAndSearchedPosts.length ? (
         <PostList
-          posts={sortedPosts}
+          posts={sortedAndSearchedPosts}
           title="Список постов JS"
           remove={removePost}
         />
