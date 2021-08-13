@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 
@@ -24,7 +24,10 @@ export default function App() {
     return posts;
   }
 
-  const sortedPosts = getSortedPosts();
+  const sortedPosts = useMemo(() => {
+    return getSortedPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSort, posts]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);

@@ -159,6 +159,18 @@ export default class ClassCounter extends Component{
 
 ---
 
+# useMemo()
+
+- принимает Callback который вернёт результат если изменится одна из зависимостей (из массива зависимостей) переданная вторым параметром.
+
+```js
+const sortedPosts = useMemo(() => {
+  return getSortedPosts();
+}, [selectedSort, posts]);
+```
+
+---
+
 # [Styling and CSS](https://reactjs.org/docs/faq-styling.html#gatsby-focus-wrapper)
 
 className
