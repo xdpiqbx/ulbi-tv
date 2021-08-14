@@ -4,6 +4,7 @@ import PostForm from './components/PostForm';
 import './styles/App.css';
 import { data } from './data';
 import PostFilter from './components/PostFilter';
+import MyModal from './components/UI/MyModal/MyModal';
 
 export default function App() {
   const [posts, setPosts] = useState(data());
@@ -46,18 +47,16 @@ export default function App() {
 
   return (
     <div className="App">
-      <PostForm create={createPost} />
+      <MyModal>
+        <PostForm create={createPost} />
+      </MyModal>
       <hr style={{ margin: '15px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
-      {sortedAndSearchedPosts.length ? (
-        <PostList
-          posts={sortedAndSearchedPosts}
-          title="Список постов JS"
-          remove={removePost}
-        />
-      ) : (
-        <h1 style={{ textAlign: 'center' }}>No posts</h1>
-      )}
+      <PostList
+        posts={sortedAndSearchedPosts}
+        title="Список постов JS"
+        remove={removePost}
+      />
     </div>
   );
 }
