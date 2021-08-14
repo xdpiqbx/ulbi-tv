@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import './styles/App.css';
-import { data } from './data';
+// import { data } from './data';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/MyModal/MyModal';
 import MyButton from './components/UI/button/MyButton';
 import { usePosts } from './hooks/usePosts';
+import axios from 'axios';
 
 export default function App() {
-  const [posts, setPosts] = useState(data());
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({
     selectedSort: '',
     searchQuery: '',
@@ -20,6 +21,12 @@ export default function App() {
     filter.selectedSort,
     filter.searchQuery
   );
+
+  const fetchPosts = async () => {
+    const URI = 'https://jsonplaceholder.typicode.com/posts';
+    const response = await axios.get(URI, {});
+    setPosts(response.data);
+  };
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -32,6 +39,15 @@ export default function App() {
 
   return (
     <div className="App">
+      <MyButton
+        style={{ marginTop: '30px' }}
+        onClick={() => {
+          fetchPosts();
+        }}
+      >
+        Get posts
+      </MyButton>
+      <hr style={{ margin: '15px 0' }} />
       <MyButton
         style={{ marginTop: '30px' }}
         onClick={() => {
