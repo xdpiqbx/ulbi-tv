@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import './styles/App.css';
@@ -16,11 +16,16 @@ export default function App() {
     searchQuery: '',
   });
   const [visibleModal, setVisibleModal] = useState(false);
+
   const sortedAndSearchedPosts = usePosts(
     posts,
     filter.selectedSort,
     filter.searchQuery
   );
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const fetchPosts = async () => {
     const URI = 'https://jsonplaceholder.typicode.com/posts';
@@ -39,14 +44,6 @@ export default function App() {
 
   return (
     <div className="App">
-      <MyButton
-        style={{ marginTop: '30px' }}
-        onClick={() => {
-          fetchPosts();
-        }}
-      >
-        Get posts
-      </MyButton>
       <hr style={{ margin: '15px 0' }} />
       <MyButton
         style={{ marginTop: '30px' }}
