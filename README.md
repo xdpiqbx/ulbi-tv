@@ -18,11 +18,14 @@
 
 ### 2. [React GIT](https://github.com/facebook/react/)
 
+### 3. [React transition group](https://reactcommunity.org/react-transition-group/)
+
 ---
 
 ```code
 npx create-react-app .
 npm start
+npm install react-transition-group --save
 ```
 
 ```js
