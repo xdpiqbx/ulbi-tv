@@ -5,9 +5,11 @@ import './styles/App.css';
 import { data } from './data';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/MyModal/MyModal';
+import MyButton from './components/UI/button/MyButton';
 
 export default function App() {
   const [posts, setPosts] = useState(data());
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const [filter, setFilter] = useState({
     selectedSort: '',
@@ -39,6 +41,7 @@ export default function App() {
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
+    setVisibleModal(false);
   };
 
   const removePost = (id) => {
@@ -47,7 +50,15 @@ export default function App() {
 
   return (
     <div className="App">
-      <MyModal>
+      <MyButton
+        style={{ marginTop: '30px' }}
+        onClick={() => {
+          setVisibleModal(true);
+        }}
+      >
+        Создать пост
+      </MyButton>
+      <MyModal visible={visibleModal} setVisible={setVisibleModal}>
         <PostForm create={createPost} />
       </MyModal>
       <hr style={{ margin: '15px 0' }} />
