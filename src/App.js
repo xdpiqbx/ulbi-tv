@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import './styles/App.css';
-// import { data } from './data';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/MyModal/MyModal';
 import MyButton from './components/UI/button/MyButton';
 import { usePosts } from './hooks/usePosts';
-import axios from 'axios';
+import PostService from './API/PostService';
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -28,9 +27,7 @@ export default function App() {
   }, []);
 
   const fetchPosts = async () => {
-    const URI = 'https://jsonplaceholder.typicode.com/posts';
-    const response = await axios.get(URI, {});
-    setPosts(response.data);
+    setPosts(await PostService.getAll());
   };
 
   const createPost = (newPost) => {
