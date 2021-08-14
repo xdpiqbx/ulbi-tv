@@ -24,6 +24,24 @@
 
 /* -------------------------------------- */
 .post-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.post-enter-active {
+  opacity: 1;
+  transition: opacity 500ms, transform 500ms;
+  transform: translateX(0%);
+}
+.post-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.post-exit-active {
+  opacity: 0;
+  transition: opacity 500ms, transform 500ms;
+  transform: translateX(100%);
+}
+/* .post-enter {
   transform: translateX(-350px);
 }
 .post-enter-active {
@@ -36,4 +54,4 @@
 .post-exit-active {
   transform: translateX(-350px);
   transition: all 500ms ease-in;
-}
+} */
