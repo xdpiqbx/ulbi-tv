@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import './styles/App.css';
@@ -11,6 +11,7 @@ import Loader from './components/UI/Loader/Loader';
 import { useFetching } from './hooks/useFetching';
 import { getPageCount } from './utils/pages';
 import { usePagination } from './hooks/usePagination';
+import Pagination from './components/UI/Pagination/Pagination';
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -23,7 +24,7 @@ export default function App() {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
 
-  const pagesArray = usePagination(totalPages);
+  // const pagesArray = usePagination(totalPages);
 
   const sortedAndSearchedPosts = usePosts(
     posts,
@@ -32,7 +33,7 @@ export default function App() {
   );
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(
-    async () => {
+    async (limit, page) => {
       const response = await PostService.getAll(limit, page);
       setPosts(response.data);
       const totalCount = response.headers['x-total-count'];
@@ -41,7 +42,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(limit, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -54,12 +55,9 @@ export default function App() {
     setPosts(posts.filter((p) => p.id !== id));
   };
 
-  //// !!!!
-  //// https://youtu.be/GNrdg3PzpJQ?t=7555
-
   const changePage = (page) => {
     setPage(page);
-    fetchPosts();
+    fetchPosts(limit, page);
   };
 
   return (
@@ -102,19 +100,11 @@ export default function App() {
           remove={removePost}
         />
       )}
-      <div className="page__wrapper">
-        {pagesArray.map((p) => {
-          return (
-            <span
-              onClick={() => changePage(p)}
-              className={p === page ? 'page  page__current' : 'page'}
-              key={p}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      <Pagination
+        totalPages={totalPages}
+        page={page}
+        changePage={changePage}
+      />
     </div>
   );
 }

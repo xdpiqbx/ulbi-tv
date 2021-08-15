@@ -20,6 +20,7 @@
 			"rsc"
 		],
 		"body": [
+			"import s from './${1:name}.module.css';",
 			"const ${1:name} = () => {",
 			"\treturn(",
 			"\t\t<div>",
