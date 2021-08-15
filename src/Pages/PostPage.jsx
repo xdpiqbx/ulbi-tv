@@ -1,4 +1,3 @@
-import { map } from 'bluebird';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PostService from '../API/PostService';
@@ -25,11 +24,14 @@ const PostPage = () => {
     });
 
   useEffect(() => {
-    fetchPostById(id);
-    fetchPostComments(id);
+    if (!error) {
+      fetchPostById(id);
+    }
+    if (!errorComment) {
+      fetchPostComments(id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(comments);
 
   return (
     <div className="App">

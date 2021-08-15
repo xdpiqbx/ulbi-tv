@@ -26,6 +26,8 @@ export default function Posts() {
   });
   const [visibleModal, setVisibleModal] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
+  // (setLimit) newer use
+  // eslint-disable-next-line no-unused-vars
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
 
