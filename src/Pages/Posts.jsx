@@ -40,7 +40,7 @@ export default function Posts() {
   const [fetchPosts, isPostsLoading, postError] = useFetching(
     async (limit, page) => {
       const response = await PostService.getAll(limit, page);
-      setPosts(response.data);
+      setPosts([...posts, ...response.data]); // ---------------->>> https://youtu.be/GNrdg3PzpJQ?t=10089
       const totalCount = response.headers['x-total-count'];
       setTotalPages(getPageCount(totalCount, limit));
     }
@@ -87,7 +87,12 @@ export default function Posts() {
           <p>{postError}</p>
         </>
       )}
-      {isPostsLoading ? (
+      <PostList
+        posts={sortedAndSearchedPosts}
+        title="Список постов JS"
+        remove={removePost}
+      />
+      {isPostsLoading && (
         <div
           style={{
             display: 'flex',
@@ -98,12 +103,6 @@ export default function Posts() {
         >
           <Loader />
         </div>
-      ) : (
-        <PostList
-          posts={sortedAndSearchedPosts}
-          title="Список постов JS"
-          remove={removePost}
-        />
       )}
       <Pagination
         totalPages={totalPages}

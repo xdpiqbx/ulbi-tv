@@ -26,6 +26,8 @@
 
 ### 6. [REACT ROUTER](https://reactrouter.com/)
 
+### 7. [Intersection Observer API](https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API)
+
 ---
 
 ```code
