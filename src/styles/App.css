@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   display: flex;
   align-items: center;
@@ -21,6 +30,10 @@
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
+}
+
+.post__btns {
+  display: flex;
 }
 
 /* -------------------------------------- */

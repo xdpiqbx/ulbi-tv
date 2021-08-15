@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import About from '../../Pages/About';
 import ErrorPage from '../../Pages/ErrorPage';
+import PostPage from '../../Pages/PostPage';
 import Posts from '../../Pages/Posts';
 
 const AppRouter = () => {
@@ -9,8 +10,11 @@ const AppRouter = () => {
       <Route path="/about">
         <About />
       </Route>
-      <Route path="/posts">
+      <Route exact path="/posts">
         <Posts />
+      </Route>
+      <Route exact path="/posts/:id">
+        <PostPage />
       </Route>
       <Route path="/error">
         <ErrorPage />
