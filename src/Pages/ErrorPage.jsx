@@ -1,4 +1,3 @@
-// import s from './ErrorPage.module.css';
 const ErrorPage = () => {
   return (
     <div>
