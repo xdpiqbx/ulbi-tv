@@ -1,10 +1,11 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { routes } from '../../router';
+import { privateRoutes, publicRoutes } from '../../router';
 
 const AppRouter = () => {
-  return (
+  const isAuth = true;
+  return isAuth ? (
     <Switch>
-      {routes.map(({ path, component, exact }, index) => (
+      {privateRoutes.map(({ path, component, exact }, index) => (
         <Route
           key={index}
           component={component}
@@ -13,6 +14,18 @@ const AppRouter = () => {
         />
       ))}
       <Redirect to="/posts" />
+    </Switch>
+  ) : (
+    <Switch>
+      {publicRoutes.map(({ path, component, exact }, index) => (
+        <Route
+          key={index}
+          component={component}
+          path={path}
+          exact={exact}
+        />
+      ))}
+      <Redirect to="/login" />
     </Switch>
   );
 };
