@@ -13,6 +13,7 @@ import PostService from '../API/PostService';
 
 import { usePosts } from '../hooks/usePosts';
 import { useFetching } from '../hooks/useFetching';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 import { getPageCount } from '../utils/pages';
 
@@ -38,7 +39,6 @@ export default function Posts() {
   );
 
   const lastElement = useRef();
-  const observer = useRef();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(
     async (limit, page) => {
@@ -49,21 +49,12 @@ export default function Posts() {
     }
   );
 
-  useEffect(() => {
-    if (isPostsLoading) return;
-    if (observer.current) observer.current.disconnect();
-
-    const callback = function (entries, observer) {
-      if (entries[0].isIntersecting && page < totalPages) {
-        setPage(page + 1);
-      }
-    };
-
-    observer.current = new IntersectionObserver(callback);
-    observer.current.observe(lastElement.current);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPostsLoading]);
+  useIntersectionObserver(
+    lastElement,
+    page < totalPages,
+    isPostsLoading,
+    () => setPage(page + 1)
+  );
 
   useEffect(() => {
     fetchPosts(limit, page);
