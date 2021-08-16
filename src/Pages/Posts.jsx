@@ -18,6 +18,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { getPageCount } from '../utils/pages';
 
 import '../styles/App.css';
+import MySelect from '../components/UI/select/MySelect';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -27,8 +28,6 @@ export default function Posts() {
   });
   const [visibleModal, setVisibleModal] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
-  // (setLimit) newer use
-  // eslint-disable-next-line no-unused-vars
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
 
@@ -59,7 +58,7 @@ export default function Posts() {
   useEffect(() => {
     fetchPosts(limit, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [limit, page]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -90,6 +89,19 @@ export default function Posts() {
       </MyModal>
       <hr style={{ margin: '15px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
+      <MySelect
+        value={limit}
+        onChange={(value) => {
+          setLimit(value);
+        }}
+        defaultValue="Количество елементов на странице"
+        options={[
+          { value: 5, title: '5' },
+          { value: 10, title: '10' },
+          { value: 25, title: '25' },
+          { value: -1, title: 'Показать всё' },
+        ]}
+      />
       {postError && (
         <>
           <h1>Произошла ошибка</h1>
