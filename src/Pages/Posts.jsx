@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
@@ -37,19 +37,38 @@ export default function Posts() {
     filter.searchQuery
   );
 
+  const lastElement = useRef();
+  const observer = useRef();
+
   const [fetchPosts, isPostsLoading, postError] = useFetching(
     async (limit, page) => {
       const response = await PostService.getAll(limit, page);
-      setPosts([...posts, ...response.data]); // ---------------->>> https://youtu.be/GNrdg3PzpJQ?t=10089
+      setPosts([...posts, ...response.data]);
       const totalCount = response.headers['x-total-count'];
       setTotalPages(getPageCount(totalCount, limit));
     }
   );
 
   useEffect(() => {
+    if (isPostsLoading) return;
+    if (observer.current) observer.current.disconnect();
+
+    const callback = function (entries, observer) {
+      if (entries[0].isIntersecting && page < totalPages) {
+        setPage(page + 1);
+      }
+    };
+
+    observer.current = new IntersectionObserver(callback);
+    observer.current.observe(lastElement.current);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPostsLoading]);
+
+  useEffect(() => {
     fetchPosts(limit, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -62,7 +81,6 @@ export default function Posts() {
 
   const changePage = (page) => {
     setPage(page);
-    fetchPosts(limit, page);
   };
 
   return (
@@ -91,6 +109,10 @@ export default function Posts() {
         posts={sortedAndSearchedPosts}
         title="Список постов JS"
         remove={removePost}
+      />
+      <div
+        ref={lastElement}
+        style={{ height: '20px', backgroundColor: 'red' }}
       />
       {isPostsLoading && (
         <div
