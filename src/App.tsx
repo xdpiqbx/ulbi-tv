@@ -1,9 +1,12 @@
 import React from 'react';
+import Card from './Components/Card';
 
 function App() {
   return (
     <div>
-      <h1>React TS</h1>
+      <Card width="200px" height="200px">
+        <button>Button</button>
+      </Card>
     </div>
   );
 }
