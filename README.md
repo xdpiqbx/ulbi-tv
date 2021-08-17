@@ -12,6 +12,8 @@
 
 ### [React TypeScript ПОЛНЫЙ КУРС 2021. Props, Events, Router, Hooks, Requests.](https://www.youtube.com/watch?v=92qcfeWxtnY)
 
+[Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-type-script-props-events-router-hook-req)
+
 ### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
 ### [ТОП 5 REACT ХУКОВ (React hooks). Делаем свои React хуки](https://www.youtube.com/watch?v=ks8oftGP2oc)
