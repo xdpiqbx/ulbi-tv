@@ -2,6 +2,8 @@
 
 ## [Канал Ulbi-TV](https://www.youtube.com/channel/UCDzGdB9TTgFm8jRXn1tBdoA)
 
+### [Continue from ...](https://youtu.be/92qcfeWxtnY?t=358)
+
 ---
 
 ```code
