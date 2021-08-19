@@ -14,6 +14,53 @@ npx create-react-app . --template typescript
 
 ---
 
+```js
+import React from 'react';
+import { useState } from 'react';
+
+export enum CardVariant {
+  outlined = 'outlined',
+  primary = 'primary',
+}
+
+interface CardProps {
+  width?: string;
+  height?: string; // ? - не обязательно
+  variant: CardVariant; // enum CardVariant
+  onClick: (num: number) => void; // что вернёт? - void, sting, number
+}
+
+/*
+const Card: React.FC<CardProps> = (...) => {...}
+Card название компонента (как обычно)
+React.FC - Тип компонента FC - функциональный компонент
+<CardProps> - дженерик тип, интерфейс описанный выше (то что принимает компонет)
+*/
+
+const Card: React.FC<CardProps> = (
+  { width, height, variant, children, onClick }
+  ) => {
+  const [state, setState] = useState(0);
+  return (
+    <div
+      style={{
+        width,
+        height,
+        border: variant === CardVariant.outlined ? '1px solid gray' : 'none',
+        background: variant === CardVariant.primary ? 'lightgray' : 'none',
+      }}
+      onClick={() => onClick(state)}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default Card;
+```
+
+---
+
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-fundamentals-course-09-08-2021)
