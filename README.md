@@ -2,6 +2,8 @@
 
 ## [Канал Ulbi-TV](https://www.youtube.com/channel/UCDzGdB9TTgFm8jRXn1tBdoA)
 
+### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
+
 ### [Continue from ...](https://youtu.be/92qcfeWxtnY?t=358)
 
 ---
