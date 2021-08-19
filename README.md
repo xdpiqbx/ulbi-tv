@@ -10,6 +10,7 @@
 
 ```code
 npx create-react-app . --template typescript
+npm i axios
 ```
 
 ---

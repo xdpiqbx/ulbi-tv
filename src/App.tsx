@@ -1,23 +1,27 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import Card, { CardVariant } from './Components/Card';
 import UserList from './Components/UserList';
 import { IUser } from './types/types';
 
 function App() {
-  const users: IUser[] = [
-    {
-      id: 1,
-      name: 'Ulbi',
-      email: 'ulbi@m.com',
-      address: { city: 'Moksha', street: 'Olenia', zipcode: '679 907' },
-    },
-    {
-      id: 2,
-      name: 'Tim',
-      email: 'tim@m.com',
-      address: { city: 'Spbg', street: 'Octobeer', zipcode: '687 907' },
-    },
-  ];
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  async function fetchUsers() {
+    try {
+      const URL = 'https://jsonplaceholder.typicode.com/users';
+      const response = await axios.get<IUser[]>(URL);
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <Card

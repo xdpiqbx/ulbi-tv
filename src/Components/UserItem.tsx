@@ -14,7 +14,7 @@ const UserItem: React.FC<UserItemProps> = ({ user }) => {
         border: '1px solid gray',
       }}
     >
-      {user.id} проживает в городе {user.address.city} на улице{' '}
+      {user.name} проживает в городе {user.address.city} на улице{' '}
       {user.address.street}
     </li>
   );
