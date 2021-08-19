@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Card, { CardVariant } from './Components/Card';
 import UserList from './Components/UserList';
+import List from './Components/List';
 import { IUser } from './types/types';
+import UserItem from './Components/UserItem';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -34,7 +36,10 @@ function App() {
       >
         <button>Button</button>
       </Card>
-      <UserList users={users} />
+      <List
+        items={users}
+        renderItem={(user: IUser) => <UserItem user={user} key={user.id} />}
+      />
     </div>
   );
 }
