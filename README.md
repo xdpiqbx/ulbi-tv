@@ -4,7 +4,7 @@
 
 ### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
-### [Continue from ...](https://youtu.be/92qcfeWxtnY?t=358)
+### [Continue from ...](https://youtu.be/92qcfeWxtnY?t=1071)
 
 ---
 
