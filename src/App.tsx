@@ -4,14 +4,17 @@ import { useEffect } from 'react';
 import Card, { CardVariant } from './Components/Card';
 import UserList from './Components/UserList';
 import List from './Components/List';
-import { IUser } from './types/types';
+import { ITodo, IUser } from './types/types';
 import UserItem from './Components/UserItem';
+import TodoItem from './Components/TodoItem';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
 
   useEffect(() => {
     fetchUsers();
+    fetchTodos();
   }, []);
 
   async function fetchUsers() {
@@ -19,6 +22,16 @@ function App() {
       const URL = 'https://jsonplaceholder.typicode.com/users';
       const response = await axios.get<IUser[]>(URL);
       setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchTodos() {
+    try {
+      const URL = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
+      const response = await axios.get<ITodo[]>(URL);
+      setTodos(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +52,10 @@ function App() {
       <List
         items={users}
         renderItem={(user: IUser) => <UserItem user={user} key={user.id} />}
+      />
+      <List
+        items={todos}
+        renderItem={(todo: ITodo) => <TodoItem todo={todo} key={todo.id} />}
       />
     </div>
   );

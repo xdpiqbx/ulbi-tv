@@ -62,6 +62,32 @@ export default Card;
 
 ---
 
+Создать шаблонный компонент
+
+```js
+import React from 'react';
+
+interface ListProps<T> {
+  // массив любых елементов
+  items: T[];
+  // функция котрая принимает елемент и возвращает ReactNode
+  renderItem: (item: T) => React.ReactNode;
+}
+
+export default function List<T>(props: ListProps<T>) {
+  return <div>{props.items.map((item) => props.renderItem(item))}</div>;
+}
+```
+
+```js
+<List
+  items={users}
+  renderItem={(user: IUser) => <UserItem user={user} key={user.id} />}
+/>
+```
+
+---
+
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-fundamentals-course-09-08-2021)
