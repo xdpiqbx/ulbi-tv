@@ -3,11 +3,13 @@ import { IUser } from '../types/types';
 
 export interface UserItemProps {
   user: IUser;
+  onClick: (user: IUser) => void;
 }
 
-const UserItem: React.FC<UserItemProps> = ({ user }) => {
+const UserItem: React.FC<UserItemProps> = ({ user, onClick }) => {
   return (
     <li
+      onClick={() => onClick(user)}
       style={{
         listStyle: 'none',
         padding: '15px',
