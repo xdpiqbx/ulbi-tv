@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { ITodo } from '../types/types';
 import List from './List';
 import TodoItem from './TodoItem';
@@ -8,6 +9,7 @@ export interface TodosPageProps {}
 
 const TodosPage: React.FC<TodosPageProps> = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
+  const history = useHistory();
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -23,7 +25,13 @@ const TodosPage: React.FC<TodosPageProps> = () => {
   return (
     <List
       items={todos}
-      renderItem={(todo: ITodo) => <TodoItem todo={todo} key={todo.id} />}
+      renderItem={(todo: ITodo) => (
+        <TodoItem
+          onClick={(todo) => history.push(`/todos/${todo.id}`)}
+          todo={todo}
+          key={todo.id}
+        />
+      )}
     />
   );
 };

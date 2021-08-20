@@ -3,11 +3,13 @@ import { ITodo } from '../types/types';
 
 export interface TodoItemProps {
   todo: ITodo;
+  onClick: (todo: ITodo) => void;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, onClick }) => {
   return (
     <li
+      onClick={() => onClick(todo)}
       style={{
         listStyle: 'none',
         padding: '15px',
