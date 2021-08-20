@@ -11,6 +11,7 @@
 ```code
 npx create-react-app . --template typescript
 npm i axios
+npm i react-router-dom @types/react-router-dom
 ```
 
 ---

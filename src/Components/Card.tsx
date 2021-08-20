@@ -29,7 +29,10 @@ const Card: React.FC<CardProps> = ({
         border: variant === CardVariant.outlined ? '1px solid gray' : 'none',
         background: variant === CardVariant.primary ? 'lightgray' : 'none',
       }}
-      onClick={() => onClick(state)}
+      onClick={() => {
+        setState(state + 1);
+        onClick(state);
+      }}
     >
       {children}
     </div>
