@@ -115,6 +115,16 @@ export const store = createStore(rootReducer, composeWithDevTools());
 const stateCash = useSelector((state) => state.rCash.cash);
 ```
 
+[video Commit](https://github.com/xdpiqbx/ulbi-tv/commit/804122c6aa45ebaef76aa37f4d4f08b584773d67)
+
+---
+
+[Видео 4. React и Redux.Action creators. Работа с массивами. Рефакторинг](https://www.youtube.com/watch?v=WLeK7vIEi5I&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=4)
+
+```code
+
+```
+
 ---
 
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
