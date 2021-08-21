@@ -86,7 +86,33 @@ export default App;
 ### [Видео 3. Redux и React. Combine Reducers, redux devtools](https://www.youtube.com/watch?v=ldgnmiPIftw&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=3)
 
 ```code
+npm i redux-devtools-extension
+```
 
+Combine Reducers in `store/index.js`
+Added `redux-devtools-extension`
+
+```js
+import { createStore, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+// import Reducers
+import { cashReducer } from './cashReducer';
+import { customerReducer } from './customerReducer';
+
+// Combine Reducers
+const rootReducer = combineReducers({
+  rCash: cashReducer,
+  rCustomer: customerReducer,
+});
+
+export const store = createStore(rootReducer, composeWithDevTools());
+```
+
+Теперь в компоненте App
+`state.rCash.cash`
+
+```js
+const stateCash = useSelector((state) => state.rCash.cash);
 ```
 
 ---
