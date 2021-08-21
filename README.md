@@ -4,6 +4,51 @@
 
 ---
 
+### [Плейлист Redux](https://www.youtube.com/playlist?list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6)
+
+```code
+npx create-react-app .
+npm i redux react-redux
+```
+
+---
+
+Создать `store` - объект который содержит методы получения изменения и подписатся ни изменение состояния
+
+`index.js`
+
+```js
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+// пример action
+// const action = { type: 'ADD_CASH', payload: 10 };
+
+const defaultState = { cash: 0 };
+
+const reducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case 'ADD_CASH':
+      return { ...state, cash: state.cash + action.payload };
+    case 'GET_CASH':
+      return { ...state, cash: state.cash - action.payload };
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+---
+
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-fundamentals-course-09-08-2021)
@@ -15,8 +60,6 @@
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-type-script-props-events-router-hook-req)
 
 ---
-
-### [Плейлист Redux](https://www.youtube.com/playlist?list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6)
 
 ### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
