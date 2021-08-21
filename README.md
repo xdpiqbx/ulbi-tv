@@ -157,6 +157,14 @@ function App() {
 
 ---
 
+[Видео 5. React и Redux.Action creators. Redux thunk и асинхронные действия](https://www.youtube.com/watch?v=CtrWoX_KDjE&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=5)
+
+```code
+
+```
+
+---
+
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-fundamentals-course-09-08-2021)
