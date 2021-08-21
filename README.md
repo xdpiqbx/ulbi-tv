@@ -121,8 +121,38 @@ const stateCash = useSelector((state) => state.rCash.cash);
 
 [Видео 4. React и Redux.Action creators. Работа с массивами. Рефакторинг](https://www.youtube.com/watch?v=WLeK7vIEi5I&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=4)
 
-```code
+```js
+const defaultState = { cash: 0 };
 
+const ADD_CASH = 'ADD_CASH';
+const GET_CASH = 'GET_CASH';
+
+export const cashReducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case ADD_CASH:
+      return { ...state, cash: state.cash + action.payload };
+    case GET_CASH:
+      return { ...state, cash: state.cash - action.payload };
+    default:
+      return state;
+  }
+};
+
+// Action creators
+export const addCashAction = (payload) => ({ type: ADD_CASH, payload });
+export const getCashAction = (payload) => ({ type: GET_CASH, payload });
+```
+
+```js
+function App() {
+  // ...
+  const addCash = (cash) => {
+    dispatch(addCashAction(cash));
+  };
+  const getCash = (cash) => {
+    dispatch(getCashAction(cash));
+  };
+  //...
 ```
 
 ---
