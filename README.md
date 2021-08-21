@@ -13,7 +13,7 @@ npm i redux react-redux
 
 ---
 
-Создать `store` - объект который содержит методы получения изменения и подписатся ни изменение состояния
+Создать `store` - объект который содержит методы получения изменения и подписатся на изменение состояния
 
 `index.js`
 
@@ -45,6 +45,36 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+```
+
+Для изменения состояния нужен `dispatch` в компоненте
+
+```js
+import { useDispatch, useSelector } from 'react-redux';
+import './App.css';
+
+function App() {
+  const dispatch = useDispatch();
+  const stateCash = useSelector((state) => state.cash);
+
+  const addCash = (cash) => {
+    dispatch({ type: 'ADD_CASH', payload: cash });
+  };
+
+  const getCash = (cash) => {
+    dispatch({ type: 'GET_CASH', payload: cash });
+  };
+
+  return (
+    <div>
+      <div style={{ fontSize: '3rem' }}>{stateCash}</div>
+      <button onClick={() => addCash(parseInt(prompt('Add')))}>Incr</button>
+      <button onClick={() => getCash(parseInt(prompt('Get')))}>Decr</button>
+    </div>
+  );
+}
+
+export default App;
 ```
 
 ---
