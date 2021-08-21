@@ -6,6 +6,10 @@
 
 ### [Плейлист Redux](https://www.youtube.com/playlist?list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6)
 
+---
+
+|[Видео 2. Redux и React. State, reducer, action + redux hooks useDispatch и useSelector](https://www.youtube.com/watch?v=Dzzeir85i3c&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=3)
+
 ```code
 npx create-react-app .
 npm i redux react-redux
@@ -75,6 +79,14 @@ function App() {
 }
 
 export default App;
+```
+
+---
+
+### [Видео 3. Redux и React. Combine Reducers, redux devtools](https://www.youtube.com/watch?v=ldgnmiPIftw&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=3)
+
+```code
+
 ```
 
 ---
