@@ -1,9 +1,9 @@
-import { fetchCustomersAction } from '../store/customerReducer';
+// import { fetchCustomersAction } from '../store/customerReducer';
 
-export const fetchCustomers = () => {
-  return function (dispatch) {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((json) => dispatch(fetchCustomersAction(json)));
-  };
-};
+// export const fetchCustomers = () => {
+//   return function (dispatch) {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//       .then((response) => response.json())
+//       .then((json) => dispatch(fetchCustomersAction(json)));
+//   };
+// };

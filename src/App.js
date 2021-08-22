@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { fetchCustomers } from './asyncActions/customers';
+// import { fetchCustomers } from './asyncActions/customers';
 import { addCashAction, getCashAction } from './store/cashReducer';
 import {
   addCustomerAction,
@@ -32,24 +32,21 @@ function App() {
     dispatch(removeCustomerAction(customer.id));
   };
 
-  const fetchAllCustomers = () => {
-    dispatch(fetchCustomers());
-  };
+  // const fetchAllCustomers = () => {
+  //   dispatch(fetchCustomers());
+  // };
 
   return (
     <div>
       <div style={{ fontSize: '3rem' }}>{stateCash}</div>
-      <button onClick={() => addCash(parseInt(prompt('Add')))}>Incr</button>
-      <button onClick={() => getCash(parseInt(prompt('Get')))}>Decr</button>
+      <button onClick={() => addCash(1)}>Incr</button>
+      <button onClick={() => getCash(1)}>Decr</button>
       <button onClick={() => addCustomer(prompt('Добавить клинета'))}>
         Добавить клинета
       </button>
-      <button onClick={() => getCash(parseInt(prompt('Удалить клинета')))}>
-        Удалить клинета
-      </button>
-      <button onClick={() => fetchAllCustomers()}>
+      {/* <button onClick={() => fetchAllCustomers()}>
         Добавить всех клинетов
-      </button>
+      </button> */}
       {stateCustomers.length > 0 ? (
         <ul style={{ listStyle: 'none' }}>
           {stateCustomers.map((customer) => (

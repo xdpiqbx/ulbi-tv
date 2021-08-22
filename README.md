@@ -211,6 +211,21 @@ const fetchAllCustomers = () => {
 
 [6. Redux и React. Redux saga асинхронные actions](https://www.youtube.com/watch?v=ylhHYtTyVGE&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=6)
 
+### Redux saga построен вокруг генераторов `function* (){}`
+
+### Workers
+
+- ф-ция в которой выполняется асинхронная логика
+
+### Watchers
+
+- функция генератор в которой с пом ф-ций указываем `action type` и `worker`
+  Проще говоря Watcher - наблюдатель который ждёт когда отработает `action`
+
+### Effects
+
+- `API Redux saga` для запросов, `dispatch`, следить за `workers`
+
 ---
 
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
