@@ -4,6 +4,15 @@
 
 ---
 
+## [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
+
+```code
+npx create-react-app . --template typescript
+npm i @types/react-redux redux react-redux redux-thunk axios
+```
+
+---
+
 ### [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ)
 
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-fundamentals-course-09-08-2021)
@@ -21,8 +30,6 @@
 [Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/redux-playlist-10-2020)
 
 ---
-
-### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
 ### [ТОП 5 REACT ХУКОВ (React hooks). Делаем свои React хуки](https://www.youtube.com/watch?v=ks8oftGP2oc)
 
