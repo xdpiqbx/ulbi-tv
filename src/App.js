@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 // import { fetchCustomers } from './asyncActions/customers';
-import { addCashAction, getCashAction } from './store/cashReducer';
+import { asyncAddCashAction, asyncGetCashAction } from './store/cashReducer';
 import {
   addCustomerAction,
   removeCustomerAction,
@@ -12,12 +12,12 @@ function App() {
   const stateCash = useSelector((state) => state.rCash.cash);
   const stateCustomers = useSelector((state) => state.rCustomer.customers);
 
-  const addCash = (cash) => {
-    dispatch(addCashAction(cash));
+  const asyncAddCash = (cash) => {
+    dispatch(asyncAddCashAction(cash));
   };
 
-  const getCash = (cash) => {
-    dispatch(getCashAction(cash));
+  const asyncGetCash = (cash) => {
+    dispatch(asyncGetCashAction(cash));
   };
 
   const addCustomer = (name) => {
@@ -39,8 +39,8 @@ function App() {
   return (
     <div>
       <div style={{ fontSize: '3rem' }}>{stateCash}</div>
-      <button onClick={() => addCash(1)}>Incr</button>
-      <button onClick={() => getCash(1)}>Decr</button>
+      <button onClick={() => asyncAddCash(1)}>Incr</button>
+      <button onClick={() => asyncGetCash(1)}>Decr</button>
       <button onClick={() => addCustomer(prompt('Добавить клинета'))}>
         Добавить клинета
       </button>

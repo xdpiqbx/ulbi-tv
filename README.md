@@ -211,6 +211,10 @@ const fetchAllCustomers = () => {
 
 [6. Redux и React. Redux saga асинхронные actions](https://www.youtube.com/watch?v=ylhHYtTyVGE&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=6)
 
+```code
+npm i redux-saga
+```
+
 ### Redux saga построен вокруг генераторов `function* (){}`
 
 ### Workers
@@ -225,6 +229,45 @@ const fetchAllCustomers = () => {
 ### Effects
 
 - `API Redux saga` для запросов, `dispatch`, следить за `workers`
+
+```js
+// store/index.js
+//...
+import createSagaMiddleware from '@redux-saga/core';
+const sagaMiddleware = createSagaMiddleware();
+//...
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(countWatcher);
+```
+
+```js
+import { put, takeEvery } from 'redux-saga/effects';
+import {
+  addCashAction,
+  getCashAction,
+  ASYNC_ADD_CASH,
+  ASYNC_GET_CASH,
+} from '../store/cashReducer';
+
+// Эффекты из Redux Saga
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function* incrementWorker() {
+  yield delay(1000); // перед каждым асинхронным действием пишем yield
+  yield put(addCashAction(1)); // put - это как dispatch для синхронный actions
+}
+
+function* decrementWorker() {
+  yield delay(1000); // перед каждым асинхронным действием пишем yield
+  yield put(getCashAction(1)); // put - это как dispatch для синхронный actions
+}
+
+export function* countWatcher() {
+  yield takeEvery(ASYNC_ADD_CASH, incrementWorker);
+  yield takeEvery(ASYNC_GET_CASH, decrementWorker);
+}
+```
 
 ---
 
