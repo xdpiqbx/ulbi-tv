@@ -160,7 +160,51 @@ function App() {
 [Видео 5. React и Redux.Action creators. Redux thunk и асинхронные действия](https://www.youtube.com/watch?v=CtrWoX_KDjE&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=5)
 
 ```code
+npm i redux-thunk
+```
 
+```js
+//...
+import thunk from 'redux-thunk';
+//...
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+```
+
+```js
+//in reducer
+case FETCH_CUSTOMERS:
+      return { ...state, customers: [...state.customers, ...action.payload] };
+//action creator
+export const fetchCustomersAction = (payload) => ({
+  type: FETCH_CUSTOMERS,
+  payload,
+});
+```
+
+```js
+//..../asyncActions/customers.js
+import { fetchCustomersAction } from '../store/customerReducer';
+
+// чтоб потом использовать эту ф-цию как action
+// нужно вернуть из неё новую ф-цию которая параметром принимает dispatch
+export const fetchCustomers = () => {
+  return function (dispatch) {
+    // ...которая параметром принимает dispatch
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((json) => dispatch(fetchCustomersAction(json))); // json = payload
+  };
+};
+```
+
+```js
+// click handler in App.js
+const fetchAllCustomers = () => {
+  dispatch(fetchCustomers());
+};
 ```
 
 ---
