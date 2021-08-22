@@ -4,11 +4,81 @@
 
 ---
 
+[Continue](https://youtu.be/ETWABFYv0GM?t=1082)
+
 ## [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
 ```code
 npx create-react-app . --template typescript
 npm i @types/react-redux redux react-redux redux-thunk axios
+```
+
+---
+
+- Создать store
+
+```js
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { rootReducer } from './reducers';
+
+export const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+
+- Создать Root Reducer
+
+```js
+import { combineReducers } from 'redux';
+import { userReducer } from './userReducer';
+export const rootReducer = combineReducers({ rUser: userReducer });
+export type RootState = ReturnType<typeof rootReducer>;
+```
+
+- Обернуть App в Provider
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+- Использовать state в компонентах (useSelect не дружит с типами)
+
+```js
+import { useTypeSelector } from '../hooks/useTypeSelector';
+
+export interface UserListProps {}
+
+const UserList: React.FC<UserListProps> = () => {
+  const { users, error, loading } = useTypeSelector((state) => state.rUser);
+  console.log({ users, error, loading });
+
+  return (
+    <div>
+      <h1>UserList</h1>
+    </div>
+  );
+};
+
+export default UserList;
+```
+
+- Хук для useSelector
+
+```js
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { RootState } from '../store/reducers';
+
+export const useTypeSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
 
 ---
