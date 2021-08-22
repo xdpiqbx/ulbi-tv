@@ -18,6 +18,10 @@
 
 ### [Плейлист Redux](https://www.youtube.com/playlist?list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6)
 
+[Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/redux-playlist-10-2020)
+
+---
+
 ### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
 
 ### [ТОП 5 REACT ХУКОВ (React hooks). Делаем свои React хуки](https://www.youtube.com/watch?v=ks8oftGP2oc)
