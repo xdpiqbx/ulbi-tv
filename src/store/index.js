@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { cashReducer } from './cashReducer';
 import { customerReducer } from './customerReducer';
 import createSagaMiddleware from '@redux-saga/core';
-import { countWatcher } from '../saga/countSaga';
+import { rootWatcher } from '../saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,4 +13,4 @@ const rootReducer = combineReducers({
 
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(countWatcher);
+sagaMiddleware.run(rootWatcher);

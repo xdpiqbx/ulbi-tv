@@ -211,6 +211,8 @@ const fetchAllCustomers = () => {
 
 [6. Redux и React. Redux saga асинхронные actions](https://www.youtube.com/watch?v=ylhHYtTyVGE&list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6&index=6)
 
+# Срала, мазала. С этого урока непонятно НИХУЯ!
+
 ```code
 npm i redux-saga
 ```

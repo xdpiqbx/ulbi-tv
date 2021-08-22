@@ -1,77 +1,36 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
-// import { fetchCustomers } from './asyncActions/customers';
 import { asyncAddCashAction, asyncGetCashAction } from './store/cashReducer';
-import {
-  addCustomerAction,
-  removeCustomerAction,
-} from './store/customerReducer';
+import { fetchUsers } from './store/customerReducer';
 
-function App() {
+const App = () => {
+  const count = useSelector((state) => state.rCash.cash);
+  const users = useSelector((state) => state.rCustomer.users);
   const dispatch = useDispatch();
-  const stateCash = useSelector((state) => state.rCash.cash);
-  const stateCustomers = useSelector((state) => state.rCustomer.customers);
-
-  const asyncAddCash = (cash) => {
-    dispatch(asyncAddCashAction(cash));
-  };
-
-  const asyncGetCash = (cash) => {
-    dispatch(asyncGetCashAction(cash));
-  };
-
-  const addCustomer = (name) => {
-    const customer = {
-      id: Date.now(),
-      name,
-    };
-    dispatch(addCustomerAction(customer));
-  };
-
-  const removeCustomer = (customer) => {
-    dispatch(removeCustomerAction(customer.id));
-  };
-
-  // const fetchAllCustomers = () => {
-  //   dispatch(fetchCustomers());
-  // };
 
   return (
-    <div>
-      <div style={{ fontSize: '3rem' }}>{stateCash}</div>
-      <button onClick={() => asyncAddCash(1)}>Incr</button>
-      <button onClick={() => asyncGetCash(1)}>Decr</button>
-      <button onClick={() => addCustomer(prompt('Добавить клинета'))}>
-        Добавить клинета
-      </button>
-      {/* <button onClick={() => fetchAllCustomers()}>
-        Добавить всех клинетов
-      </button> */}
-      {stateCustomers.length > 0 ? (
-        <ul style={{ listStyle: 'none' }}>
-          {stateCustomers.map((customer) => (
-            <li
-              onClick={() => removeCustomer(customer)}
-              style={{
-                fontSize: '2rem',
-                border: '1px solid black',
-                margin: '5px',
-                padding: '5px',
-                cursor: 'pointer',
-              }}
-              key={customer.name}
-            >
-              {customer.name}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div style={{ fontSize: '3rem', marginTop: 20 }}>
-          Клиентов нет {`:(`}
-        </div>
-      )}
+    <div className="app">
+      <div className="count">{count}</div>
+      <div className="btns">
+        <button className="btn" onClick={() => dispatch(asyncAddCashAction())}>
+          ИНКРЕМЕНТ++
+        </button>
+        <button className="btn" onClick={() => dispatch(asyncGetCashAction())}>
+          ДЕКРЕМЕНТ--
+        </button>
+        <button className="btn" onClick={() => dispatch(fetchUsers())}>
+          ПОЛУЧИТЬ ЮЗЕРОВ--
+        </button>
+      </div>
+      <div className="users">
+        {users.map((user) => (
+          <div key={user.id} className="user">
+            {user.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
