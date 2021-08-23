@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useActions } from '../hooks/useAction';
 import { useTypeSelector } from '../hooks/useTypeSelector';
-import { fetchUsers } from '../store/action-creators/user';
 
 const UserList: React.FC = () => {
   const { users, error, loading } = useTypeSelector((state) => state.rUser);
-  const dispatch = useDispatch();
+  const { fetchUsers } = useActions();
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
