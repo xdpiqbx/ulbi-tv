@@ -2,12 +2,17 @@ import { useEffect } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypeSelector } from '../hooks/useTypeSelector';
 
-const UserList: React.FC = () => {
-  const { users, error, loading } = useTypeSelector((state) => state.rUser);
-  const { fetchUsers } = useActions();
+const TodoList: React.FC = () => {
+  const { todos, error, loading, page, limit } = useTypeSelector(
+    (state) => state.rTodo
+  );
+
+  const { fetchTodos } = useActions();
+
+  const pages = [1, 2, 3, 4, 5];
 
   useEffect(() => {
-    fetchUsers();
+    fetchTodos(page, limit);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,11 +25,13 @@ const UserList: React.FC = () => {
 
   return (
     <div>
-      {users.map((user) => (
-        <div key={user.id}>{user.name}</div>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          {todo.id} - {todo.title}
+        </div>
       ))}
     </div>
   );
 };
 
-export default UserList;
+export default TodoList;

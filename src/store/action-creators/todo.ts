@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { TodoAction, TodoActionTypes } from '../../types/todos';
 
-export const fetchTodos = (page: number = 1, limit: number = 10) => {
+export const fetchTodos = (page: number = 1, limit: number = 10): Function => {
   return async (dispatch: Dispatch<TodoAction>) => {
     try {
       dispatch({ type: TodoActionTypes.FETCH_TODOS });
@@ -25,4 +25,9 @@ export const fetchTodos = (page: number = 1, limit: number = 10) => {
   };
 };
 
-//Continue https://youtu.be/ETWABFYv0GM?t=1934
+export function setTodoPage(page: number): TodoAction {
+  return {
+    type: TodoActionTypes.SET_TODO_PAGE,
+    payload: page,
+  };
+}
