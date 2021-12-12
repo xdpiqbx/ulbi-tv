@@ -1,5 +1,9 @@
 # Практика React
 
+[Continue ...](https://youtu.be/243pQXC5Ebs?t=123)
+
+---
+
 ## [Канал Ulbi-TV](https://www.youtube.com/channel/UCDzGdB9TTgFm8jRXn1tBdoA)
 
 ---
@@ -23,6 +27,16 @@
 ---
 
 ### [React & Redux & TypeScript ПОЛНЫЙ КУРС 2021](https://www.youtube.com/watch?v=ETWABFYv0GM)
+
+[Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/react-js-redux-type-script)
+
+---
+
+### [Node JS фундаментальный курс от А до Я. Node.js Теория и практика](https://www.youtube.com/watch?v=243pQXC5Ebs)
+
+[Моя ветка на GIT](https://github.com/xdpiqbx/ulbi-tv/tree/005-NodeJS-fundamentals-Nov-2021)
+
+---
 
 ### [ТОП 5 REACT ХУКОВ (React hooks). Делаем свои React хуки](https://www.youtube.com/watch?v=ks8oftGP2oc)
 
