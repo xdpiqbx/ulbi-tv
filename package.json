@@ -1,0 +1,27 @@
+{
+  "name": "005-nodejs-fundamentals-nov-2021",
+  "version": "1.0.0",
+  "description": "[Continue ...](https://youtu.be/243pQXC5Ebs?t=123)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./lessons/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdpiqbx/ulbi-tv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xdpiqbx/ulbi-tv/issues"
+  },
+  "homepage": "https://github.com/xdpiqbx/ulbi-tv#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0"
+  }
+}
