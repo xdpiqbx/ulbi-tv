@@ -4,7 +4,7 @@
   "description": "[Continue ...](https://youtu.be/243pQXC5Ebs?t=123)",
   "main": "index.js",
   "scripts": {
-    "start": "node ./lessons/index.js"
+    "start": "nodemon ./lessons/index.js"
   },
   "repository": {
     "type": "git",
