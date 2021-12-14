@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 // fs.mkdirSync(path.resolve(__dirname, 'dir')); // создать папку (если существует будет ошибка)
 // fs.mkdirSync(path.resolve(__dirname, 'dir1', 'dir2', 'dir3'), { recursive: true }); // вложет папки одна в одну
@@ -64,7 +65,6 @@ const appendFileAsync = async (path, data) => {
 const readFileAsync = async path => {
   return new Promise((resolve, reject) =>
     fs.readFile(path, { encoding: 'utf-8' }, (err, data) => {
-      console.log('path', path);
       if (err) {
         reject(err.message);
       }
@@ -73,19 +73,41 @@ const readFileAsync = async path => {
   );
 };
 
-/// USING --------------------------------------------------------
+const removeFileAsync = async path => {
+  return new Promise((resolve, reject) =>
+    fs.rm(path, err => {
+      if (err) {
+        reject(err.message);
+      }
+      resolve();
+    })
+  );
+};
 
-writeFileAsync(path.resolve(__dirname, 'test.txt'), '123')
-  .then(path => {
-    appendFileAsync(path, '456');
-    return path;
-  })
-  .then(path => {
-    appendFileAsync(path, '789');
-  })
-  .then(() => {
-    // console.log(path);
-    readFileAsync(path.resolve(__dirname, 'test.txt'));
-  })
-  .then(data => console.log('data', data))
-  .catch(err => console.log(err));
+// USING --------------------------------------------------------
+
+// writeFileAsync(path.resolve(__dirname, 'test.txt'), '123')
+//   .then(path => appendFileAsync(path, '456'))
+//   .then(path => appendFileAsync(path, '789'))
+//   .then(path => readFileAsync(path, 'test.txt'))
+//   .then(data => console.log('data', data))
+//   .catch(err => console.log(err));
+
+// removeFileAsync(path.resolve(__dirname, 'test.txt')).then(() =>
+//   console.log('file was removed')
+// );
+
+// --------------------------------------------------- Home Work
+
+// const text = process.env.TEXT || '';
+
+// writeFileAsync(path.resolve(__dirname, 'text.txt'), text)
+//   .then(path => readFileAsync(path))
+//   .then(data => data.split(' ').length)
+//   .then(count =>
+//     writeFileAsync(
+//       path.resolve(__dirname, 'count.txt'),
+//       `Количество слов - ${count}`
+//     )
+//   )
+//   .then(() => removeFileAsync(path.resolve(__dirname, 'text.txt')));
