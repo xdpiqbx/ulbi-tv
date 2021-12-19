@@ -1,6 +1,6 @@
 # Практика React
 
-[Continue ...](https://youtu.be/243pQXC5Ebs?t=4919)
+[Continue ...](https://youtu.be/243pQXC5Ebs?t=5304)
 
 ---
 
