@@ -20,6 +20,7 @@ module.exports = class Application {
   constructor() {
     this.emitter = new EventEmitter();
     this.server = this._createServer();
+    this.middlewares = [];
   }
 
   addRouter(router) {
@@ -38,16 +39,31 @@ module.exports = class Application {
     this.server.listen(port, callback);
   }
 
+  use(middleware) {
+    this.middlewares.push(middleware);
+  }
+
   _createServer() {
     return http.createServer((request, response) => {
-      const emitted = this.emitter.emit(
-        this._getRouteMask(request.url, request.method),
-        request,
-        response
-      );
-      if (!emitted) {
-        response.end('YOU SEND REQUEST TO BLACK HOLE');
-      }
+      let body = '';
+      request.on('data', chunk => {
+        console.log(chunk);
+        body += chunk;
+      });
+      request.on('end', () => {
+        if (body) {
+          request.body = JSON.parse(body);
+        }
+        this.middlewares.forEach(mwr => mwr(request, response));
+        const emitted = this.emitter.emit(
+          this._getRouteMask(request.pathname, request.method),
+          request,
+          response
+        );
+        if (!emitted) {
+          response.end('YOU SEND REQUEST TO BLACK HOLE');
+        }
+      });
     });
   }
 
