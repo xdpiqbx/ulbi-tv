@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000;
 const Application = require('../framework/Application');
 const userRouter = require('./src/user-routes');
@@ -22,9 +23,20 @@ app.addRouter(userRouter);
 //   // response.end(request.url);
 // });
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+const start = async () => {
+  try {
+    await mongoose.connect(
+      'mongodb+srv://nikolai:========@cluster0.b8vbw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    );
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
 
 // **************************************************************************
 // require('./001-process');
